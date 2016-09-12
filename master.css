@@ -1,0 +1,469 @@
+<style>
+@import url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/Components/datepicker/smoothness/jquery-ui.min.css");
+
+.ms-ChoiceField-field:after
+{
+border:1px solid grey;
+}
+.ms-ChoiceField-field:hover:after
+{
+border-color:#303030;
+}
+
+.ms-Grid
+{
+	margin-left: 20px;
+	font-family:"Open Sans","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif !important;
+	font-size:16px;
+}	
+.form-Sub-Heading
+{
+	font-weight: 400;
+	text-align: left;
+	color: #4c4c4c;
+	font-size: 18px;
+	padding-bottom:20px;
+}
+.ms-font-m, .ms-Label, .ms-TextField-field, .control-Text
+{
+	font-size:16px !important;
+	color: #4c4c4c;
+	font-family:"Open Sans","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif !important;
+	line-height: 22px;
+}
+    /* Tooltip Information support */
+.information  
+{
+	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/images/information.png");
+	background-position: left bottom;
+	background-repeat: no-repeat;
+
+}
+.information:hover
+{
+	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/images/information-active.png");
+	cursor:pointer;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+	box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    z-index: 1;
+    top: -25px;
+    left: 100%;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}	
+    /* Page Layout Table support */
+.table
+{
+	display: table;
+	min-width:500px;
+	max-width:700px;
+	padding-left:10px;	
+	padding-right:10px;
+	padding-top:5px;
+	border-bottom: solid #D8D8D8 0px;
+}
+.table-Row
+{
+	display: table-Row;
+		
+}
+.table-Cell
+{
+	display: table-Cell;
+	
+}
+    /* Section headings */
+.Section
+{
+	background-color: #D1E9FF;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 3px;
+	font-weight:900;	
+}
+	/* Input formatting */
+.ms-Grid input[type='text'], select, textarea, input[type='number'], input[type=button]
+{
+	padding: 8px 10px;
+	height: auto;
+	border-radius: 3px !important;
+	box-shadow:none;
+	-webkit-appearance:none;
+}
+input[type=password]:hover, .ms-Grid input[type=text]:hover, input[type=file]:hover, select:hover, textarea:hover, .ms-inputBox:hover
+{
+ border-color:#92c0e0;
+}
+input[type=password]:focus, .ms-Grid input[type=text]:focus, input[type=file]:focus, select:focus, textarea:focus, .ms-inputBox:focus
+{
+ border-color:#2A8DD4;
+}
+select 
+{
+	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/images/downarrow.jpg");
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right: 2px;
+}	
+.small-Input
+{
+	width:10%;
+}
+input.datepicker
+{
+	background-image: url("https://collaboration.medline.com/department/compliance/hcphostedevents/Lists/HCPEvents/Form/components/datepicker/images/calendar.jpg");
+	background-position: right center;
+	background-repeat: no-repeat;
+	padding-right: 18px;
+	width: 78px;
+}
+.row-spacing
+{
+	padding-bottom: 16px;
+}
+.submit-Button
+{
+	font-weight: 600;
+	border-radius:3px;
+	background:#0079a4;
+	border-bottom:4px solid #00506c;
+	width:300px;
+}
+.submit-Button:hover
+{
+	background:#006a8f;
+	border-bottom:4px solid #00506c;
+	cursor:pointer;
+}
+.normal-Button
+{
+	border-width:3px;
+	border-radius:3px;
+	width:125px;	
+}
+.normal-Button-Text
+{
+		font-weight: 600;
+		font-size:16px;
+}
+.normal-Button:hover
+{
+	cursor:pointer;
+}
+.delete-Link
+{
+	cursor: pointer;
+	padding-left:5px;
+	color:#0072C6;
+	font-size:16px;
+}
+.delete-Link:hover
+{
+	text-decoration: underline;
+}
+
+.validate.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+  color: black;
+  background-color: white;
+  //border: 1px solid #D6E9C6;
+}
+
+.validate.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+  color: #B94A48;
+  background-color: white;
+  border: 2px solid #b94a48;
+}
+
+.validate.parsley-error:hover, .validate.parsley-error:focus, input[type=text].validate.parsley-error:hover, input[type=text].validate.parsley-error:focus
+{   border: 2px solid #b94a48; }
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+  color:#b94a48;
+
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
+}
+/* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. */
+/**
+ * Office UI Fabric 2.6.1
+ * The front-end framework for building experiences for Office 365.
+ **/
+/*Sasssssssss*/
+/*
+  Your use of the content in the files referenced here are subject to the terms of the license at http://aka.ms/fabric-font-license
+*/
+.ms-Label {
+  color: #333333;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  display: block;
+  padding: 5px 0;
+}
+
+.ms-Label.is-required:after {
+  content: ' *';
+  color: #a80000;
+}
+
+.ms-Label.is-disabled {
+  color: #a6a6a6;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .ms-Label.is-disabled {
+    color: #00ff00;
+  }
+}
+
+@media screen and (-ms-high-contrast: black-on-white) {
+  .ms-Label.is-disabled {
+    color: #600000;
+  }
+}
+
+.is-disabled .ms-Label {
+  color: #a6a6a6;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .is-disabled .ms-Label {
+    color: #00ff00;
+  }
+}
+
+@media screen and (-ms-high-contrast: black-on-white) {
+  .is-disabled .ms-Label {
+    color: #600000;
+  }
+}
+
+.ms-ChoiceField {
+  color: #333333;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  min-height: 36px;
+  position: relative;
+}
+
+.ms-ChoiceField .ms-Label {
+  font-size: 14px;
+  padding: 0 0 0 26px;
+}
+
+.ms-ChoiceField-input:disabled + .ms-ChoiceField-field {
+  pointer-events: none;
+  cursor: default;
+}
+
+.ms-ChoiceField-input:disabled + .ms-ChoiceField-field:before {
+  background-color: #c8c8c8;
+  color: #c8c8c8;
+}
+
+.ms-ChoiceField-input:disabled + .ms-ChoiceField-field:after {
+  border-color: #eaeaea;
+}
+
+.ms-ChoiceField-input:disabled + .ms-ChoiceField-field .ms-Label {
+  color: #a6a6a6;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .ms-ChoiceField-input:disabled + .ms-ChoiceField-field:before {
+    background-color: #00ff00;
+    color: #00ff00;
+  }
+
+  .ms-ChoiceField-input:disabled + .ms-ChoiceField-field:after {
+    border-color: #00ff00;
+  }
+
+  .ms-ChoiceField-input:disabled + .ms-ChoiceField-field .ms-Label {
+    color: #00ff00;
+  }
+}
+
+@media screen and (-ms-high-contrast: black-on-white) {
+  .ms-ChoiceField-input:disabled + .ms-ChoiceField-field:before {
+    background-color: #600000;
+    color: #600000;
+  }
+
+  .ms-ChoiceField-input:disabled + .ms-ChoiceField-field:after {
+    border-color: #600000;
+  }
+
+  .ms-ChoiceField-input:disabled + .ms-ChoiceField-field .ms-Label {
+    color: #600000;
+  }
+}
+
+.ms-ChoiceField-input {
+  position: absolute;
+  opacity: 0;
+  top: 8px;
+}
+
+.ms-ChoiceField-input:focus:not(:disabled) + .ms-ChoiceField-field:after {
+  border-color: #767676;
+}
+
+.ms-ChoiceField-field {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 8px;
+  position: relative;
+}
+
+.ms-ChoiceField-field:after {
+  content: '';
+  display: inline-block;
+  border: 1px #c8c8c8 solid;
+  width: 19px;
+  height: 19px;
+  cursor: pointer;
+  position: relative;
+  font-weight: normal;
+  left: -1px;
+  top: -1px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.ms-ChoiceField-field:hover:after {
+  border-color: #767676;
+}
+
+.ms-ChoiceField-field:hover .ms-Label {
+  color: #000000;
+}
+
+.ms-ChoiceField-input:checked + .ms-ChoiceField-field:before {
+  background-color: #666666;
+  border-color: #666666;
+  color: #666666;
+  border-radius: 50%;
+  content: '\00a0';
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  bottom: 0;
+  left: 4px;
+  width: 11px;
+  height: 11px;
+  box-sizing: border-box;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .ms-ChoiceField-input:checked + .ms-ChoiceField-field:before {
+    border-color: #ffffff;
+    background-color: #ffffff;
+  }
+}
+
+@media screen and (-ms-high-contrast: black-on-white) {
+  .ms-ChoiceField-input:checked + .ms-ChoiceField-field:before {
+    border-color: #000000;
+    background-color: #000000;
+  }
+}
+
+.ms-ChoiceField-input:checked + .ms-ChoiceField-field:hover:before {
+  background-color: #212121;
+  color: #212121;
+}
+
+.ms-ChoiceField-input[type='checkbox'] + .ms-ChoiceField-field:after {
+  border-radius: 0;
+}
+
+.ms-ChoiceField-input[type='checkbox']:checked + .ms-ChoiceField-field:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'Office365Icons';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  content: '\e041';
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 13px;
+  top: 3px;
+  left: 3px;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .ms-ChoiceField-input[type='checkbox']:checked + .ms-ChoiceField-field:before {
+    color: #ffffff;
+    border-color: transparent;
+    background-color: transparent;
+  }
+}
+
+@media screen and (-ms-high-contrast: black-on-white) {
+  .ms-ChoiceField-input[type='checkbox']:checked + .ms-ChoiceField-field:before {
+    color: #000000;
+    border-color: transparent;
+    background-color: transparent;
+  }
+}
+
+.ms-ChoiceFieldGroup {
+  margin-bottom: 4px;
+}
+
+
+
+</style>

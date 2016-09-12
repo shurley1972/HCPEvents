@@ -1,0 +1,34 @@
+	<div class="Table" data-bind="initBT: {}, css: {'ge-designmode': form()._formDesignMode}">	
+		<div class="table-Row">
+			<div class="table-Cell" style="width:80px;padding-left:10px;padding-right:80px;">
+                <button data-bind="visible: _formButtonSubmitEnabled, click: _formButtonSubmitClick" class="submit-Button">
+					<span style="color:#fff;" class="normal-Button-Text">Submit My Request</span>
+				</button>
+				<button style="width:150px;border-radius:3px" data-bind="visible: _formButtonCancelEnabled, click: _formButtonCancelClick" class="ms-Button ms-Button--primary">
+					<span class="normal-Button-Text">Cancel</span>
+				</button>
+			</div>
+			<div class="table-Cell">
+				<button data-bind="visible: _formButtonDeleteEnabled, click: _formButtonDeleteClick" class="normal-Button">
+					<span class="normal-Button-Text">Delete</span>
+				</button>				
+			</div>
+			<div class="table-Cell" style="width:80px;padding-left:10px;padding-right:10px;">
+                <!-- ko if:$root._formNew -->
+                <button data-bind="visible: _formButtonSaveEnabled, click: _formButtonSaveClick" class="normal-Button">
+					<span class="normal-Button-Text">Save</span>
+				</button>		
+                <!-- /ko -->
+                <!-- ko ifnot:$root._formNew -->
+                <button data-bind="visible: _formButtonSaveEnabled, click: _formButtonSaveClick" class="normal-Button">
+					<span class="normal-Button-Text">Update</span>
+				</button>
+                <!-- /ko -->
+			</div>
+			<div class="table-Cell">
+				<button data-bind="visible: _formButtonCloseEnabled, click: _formButtonCloseClick" class="normal-Button">
+					<span class="normal-Button-Text">Close</span>
+				</button>
+			</div>		
+		</div>
+	</div>

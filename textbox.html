@@ -1,0 +1,4 @@
+<div class="ms-Table" data-bind="inittextbox: {}, css: {'ge-designmode': form()._formDesignMode}" >
+	<span class="ms-Label"><span data-bind="text: label"></span><span data-bind="visible: optionaltext" style="font-size: 12px"> (optional)</span>&nbsp;&nbsp;<span data-bind="visible: infotip" class="tooltip"><span class="information table-Cell" style="width:20px">&nbsp;</span><span class="tooltiptext" data-bind="text: infotip"></span></span></span>
+	<input type="text" class="validate" data-bind="value: value, enable: enabled, attr: { 'data-parsley-required': _inputRequired, 'data-parsley-type': datatype, 'placeholder': _placeholder, 'maxlength': maxlength }, style:{width: width}"></input>	
+</div>
